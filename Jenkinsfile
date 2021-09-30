@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'test install package'
+                sh 'mvn clean package'
                 echo 'Build with Maven'
             }
         }
