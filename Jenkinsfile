@@ -8,16 +8,16 @@ pipeline {
                 echo 'cloning git repo'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-                echo 'Test Analysis'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'test install package'
                 echo 'Build with Maven'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+                echo 'Test Analysis'
             }
         }
         stage('Deploy to Server') {
@@ -29,4 +29,5 @@ pipeline {
 
     }
 }
+
 
