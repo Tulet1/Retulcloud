@@ -28,12 +28,12 @@ pipeline {
                     deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.144.187.92:8080')], contextPath: 'webapps', war: '**/*.war'
             }
         }
-            stage('Deploy to Tomcat-1') {
+            stage('Deploy to Artifacts') {
                 steps {
                     echo 'Deploy to Tomcat-1'
             }
         }
-            stage('Tomcat-2') {
+            stage('User Acceptance Server') {
                 steps {
                     echo 'Deploy to Tomcat-2'
             }
