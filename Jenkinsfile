@@ -20,12 +20,26 @@ pipeline {
                 echo 'Test Analysis'
             }
         }
-        stage('Deploy to Server') {
-            steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.144.187.92:8080')], contextPath: 'webapps', war: '**/*.war'
+        
+        stage('Deploy to Environments') {
+            parallel {
+            stage('Deploy to Live Server') {
+                steps {
+                    deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.144.187.92:8080')], contextPath: 'webapps', war: '**/*.war'
             }
         }
-
+            stage('Deploy to Tomcat-1') {
+                steps {
+                    echo 'Deploy to Tomcat-1'
+            }
+        }
+            stage('Tomcat-2') {
+                steps {
+                    echo 'Deploy to Tomcat-2'
+            }
+        }
+  }
+}
 
     }
 }
