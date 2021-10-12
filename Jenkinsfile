@@ -21,9 +21,9 @@ pipeline {
             }
         }
         
-        stage('Deploy to Environments') {
+        stage('Deploy to Envs') {
             parallel {
-            stage('Deploy to Application Server') {
+            stage('Deploy to App Server') {
                 steps {
                     deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.144.187.92:8080')], contextPath: 'webapps', war: '**/*.war'
             }
