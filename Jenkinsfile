@@ -21,6 +21,14 @@ pipeline {
             }
         }
         
+        stage('Code Quality Scan') {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh "mvn -f pom.xml sonar:sonar"
+                }
+            }
+        }
+        
         stage('Deploy to Envs') {
             parallel {
             stage('Deploy to App Server') {
