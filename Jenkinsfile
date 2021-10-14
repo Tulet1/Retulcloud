@@ -28,13 +28,25 @@ pipeline {
                 }
             }
         }
-                    
-        stage('Deploy to Server') {
-            steps {
+         stage('Deploy to Envs') {
+            parallel {           
+                stage('Deploy to Server') {
+                    steps {
                 deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.144.187.92:8080')], contextPath: 'webapps', war: '**/*.war'
             }
         }
-
+                stage('Deploy to Artifacts') {
+                steps {
+                    echo 'Deploy to Tomcat-1'
+            }
+        }
+                stage('Deploy to Artifacts') {
+                steps {
+                    echo 'Deploy to Tomcat-1'
+            }
+        }
+            }
+         }
     }
 }
 
