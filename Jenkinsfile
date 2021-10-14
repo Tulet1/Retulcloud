@@ -34,7 +34,11 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://3.144.187.92:8080')], contextPath: 'webapps', war: '**/*.war'
             }
         }
-                
+        stage('Deploy to QA') {
+                    steps {
+                echo 'Deploy to TOmcat'
+            }
+        }        
               
             
     }
