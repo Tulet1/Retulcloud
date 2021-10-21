@@ -4,6 +4,6 @@
 <h1> Equilog Technical Services...</h1>
 <h1> This is automation for the United Airlines Project ....</h1>
 
-<h1> Equilog Technical Services...</h1>
+<h1> Thats Technical Services...</h1>
 <h1> This is automation for the United Airlines Project ....</h1>
 
