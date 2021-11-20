@@ -29,9 +29,9 @@ pipeline {
             }
         }
                
-                stage('Deploy to Server') {
+                stage('Deploy to Azure Server') {
                     steps {
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://18.219.228.170:8080')], contextPath: 'webapps', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'tomcat-azure', path: '', url: 'http://20.121.64.12:8080/')], contextPath: 'webapp', war: '**/*.war'
             }
         }
         stage('Deploy to QA') {
