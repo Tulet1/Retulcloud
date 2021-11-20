@@ -21,22 +21,15 @@ pipeline {
             }
         }
         
-        stage('Code Quality Scan') {
+                     
+        stage('Deploy to Azure Server') {
             steps {
-                withSonarQubeEnv('sonar') {
-                    sh "mvn -f webapp/pom.xml sonar:sonar"
-                }
-            }
-        }
-               
-                stage('Deploy to Azure Server') {
-                    steps {
                 deploy adapters: [tomcat9(credentialsId: 'tomcat-azure', path: '', url: 'http://20.121.64.12:8080/')], contextPath: 'webapp', war: '**/*.war'
             }
         }
         stage('Deploy to QA') {
-                    steps {
-                echo 'Deploy to TOmcat'
+            steps {
+                echo 'Deploy to Tomcat'
             }
         }        
               
